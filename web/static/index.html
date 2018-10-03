@@ -15,11 +15,20 @@
             <button type="submit">Add Deck</button>
         </form>
         <ul>
-            <li class="tooltip" v-for="card in deck">
+            Commons
+            <li class="tooltip" v-for="(num,card) in getCounts(commons)">
                 <span :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
-                    {{cards.get(card).name}}
+                    {{cards.get(card).name}} x {{num}}
                 </span>
-                
+            </li>
+        </ul>
+        
+        <ul v-for="(deck, index) in decks">
+            Deck {{index}}
+            <li class="tooltip" v-for="(num,card) in getCounts(getUncommons(deck))">
+                <span :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
+                    {{cards.get(card).name}} x {{num}}
+                </span>
             </li>
         </ul>
     </div>
