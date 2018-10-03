@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shadowbab</title>
+    <script src="js/vue.js"></script>
+    <script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="handleSubmit">
+            <input type="deck_code" v-model="deck_code" placeholder="Deck code"/>
+            <button type="submit">Add Deck</button>
+        </form>
+        <ul>
+            <li class="tooltip" v-for="card in deck">
+                <span :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
+                    {{cards.get(card).name}}
+                </span>
+                
+            </li>
+        </ul>
+    </div>
+    <script src="js/shadowbab.js"></script>
+</body>
+</html>
