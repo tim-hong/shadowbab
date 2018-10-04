@@ -7,6 +7,8 @@
     <title>Shadowbab</title>
     <script src="js/vue.js"></script>
     <script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <div id="app">
@@ -14,23 +16,38 @@
             <input type="deck_code" v-model="deck_code" placeholder="Deck code"/>
             <button type="submit">Add Deck</button>
         </form>
-        <ul>
-            Commons
-            <li class="tooltip" v-for="(num,card) in getCounts(commons)">
-                <span :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
-                    {{cards.get(card).name}} x {{num}}
-                </span>
-            </li>
-        </ul>
-        
-        <ul v-for="(deck, index) in decks">
-            Deck {{index}}
-            <li class="tooltip" v-for="(num,card) in getCounts(getUncommons(deck))">
-                <span :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
-                    {{cards.get(card).name}} x {{num}}
-                </span>
-            </li>
-        </ul>
+        <div class="deck_area">
+            <ul class="cardlist">
+                <h2 class="deck_name">Cards in common</h2>
+                <li class="card_item" v-for="(num,card) in getCounts(commons)">
+                    <div class="card_title" :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
+                        <span class="card_cost" :style="{backgroundColor: getRarity(cards.get(card).rarity)}">{{cards.get(card).cost}}</span>
+                        <span class="card_name">
+                            {{card}}
+                        </span>
+                        <span class="card_num">
+                            x{{num}}
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <template v-if="decks.length > 0 && commons.length < 40">
+                <ul class="cardlist" v-for="(deck, index) in decks">
+                    <h2 class="deck_name">Unique to deck {{parseInt(index)+1}}</h2>
+                    <li class="card_item" v-for="(num,card) in getCounts(getUncommons(deck))">
+                        <div class="card_title" :title="getDescription(card)"  v-tippy="{ placement : 'right',  arrow: true, interactive : true }">
+                            <span class="card_cost" :style="{backgroundColor: getRarity(cards.get(card).rarity)}">{{cards.get(card).cost}}</span>
+                            <span class="card_name">
+                                {{card}}
+                            </span>
+                            <span class="card_num">
+                                x{{num}}
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </template>
+        </div>
     </div>
     <script src="js/shadowbab.js"></script>
 </body>

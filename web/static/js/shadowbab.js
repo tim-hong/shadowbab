@@ -1,14 +1,15 @@
 class Card {
-    constructor(name, skill) {
-        this.name = name;
+    constructor( skill, cost, rarity) {
         this.skill = skill;
+        this.cost = cost;
+        this.rarity = rarity;
     }
 }
-var m = new Map()
+
 var app = new Vue({
     el: '#app',
     data: {
-        cards: m,
+        cards: new Map(),
         decks: [],
         commons: [],
         deck_code: ''
@@ -20,15 +21,17 @@ var app = new Vue({
             .then(response => {
                 deck = []
                 response.forEach(card => {
-                    if(!this.cards.has(card['normal_card_id'])) {
+                    if(!this.cards.has(card['card_name'])) {
                         card_evo = ""
                         if(card['evo_skill_disc'].length > 0)
                             card_evo = "<br>Evolve: " + card['evo_skill_disc'].replace("Evolve:", "")
-                        this.cards.set(""+ card['normal_card_id'], new Card(card['card_name'], card['skill_disc'] + card_evo))
+                        this.cards.set(card['card_name'], new Card(card['skill_disc'] + card_evo, card['cost'], card['rarity']))
                     }
-                    deck.push(card['normal_card_id'])
+                    deck.push(card['card_name'])
                 });
                 this.decks.push(deck)
+                console.log(sorted)
+                console.log(deck)
                 console.log(this.cards)
             }
             ).catch(error => {
@@ -52,6 +55,24 @@ var app = new Vue({
                 return []
             val = [deck, this.commons]
             return val.reduce((a,b) => a.filter(c => !b.includes(c)))
+        },
+        getRarity: function(rarity) {
+            ret = "";
+            switch(rarity) {
+                case 1:
+                    ret = "#97695e";
+                    break;
+                case 2:
+                    ret="#b9bbc2";
+                    break;
+                case 3:
+                    ret="#c5a778";
+                    break;
+                case 4:
+                    ret="#a195dd"
+                    break;
+            }
+            return ret;
         }
     },
     watch: {

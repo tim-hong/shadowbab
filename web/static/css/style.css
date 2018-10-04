@@ -1,3 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
 .hidden {
     display: none;
+}
+
+.deck_area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.deck_name {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.cardlist {
+    margin: 50px 0 0 50px;
+    min-width: 280px;
+}
+
+.card_item {
+    width: 280px;
+    height: 46px;
+    background: #aaa;
+    color: #fff;
+
+    display: grid;
+    align-content: center;
+}
+
+.card_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_cost {
+    width: 40px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+}
+
+.card_name {
+    width: 200px;
+    height: 22px;
+    padding: 0 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card_num {
+    padding-right: 20px;
 }
