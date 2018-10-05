@@ -18,3 +18,6 @@ def fetch_deck(code):
     request2 = requests.get('https://shadowverse-portal.com/api/v1/deck?format=json&lang=en&hash=' + hash_code)
     raw_deck = request2.json()['data']['deck']['cards']
     return jsonify(raw_deck)
+
+if __name__ == '__main__':
+    app.run()
