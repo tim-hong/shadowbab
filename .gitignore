@@ -1,0 +1,12 @@
+/node_modules
+bundle.js
+npm-debug.log
+.DS_Store
+__pycache__
+
+# IntelliJ
+*.iml
+/.idea
+package-lock.json
+css/style.comp.css
+css/style.prefix.css
