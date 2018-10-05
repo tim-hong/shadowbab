@@ -30,9 +30,6 @@ var app = new Vue({
                     deck.push(card['card_name'])
                 });
                 this.decks.push(deck)
-                console.log(sorted)
-                console.log(deck)
-                console.log(this.cards)
             }
             ).catch(error => {
                 console.log(error)
