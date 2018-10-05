@@ -73,6 +73,12 @@ var app = new Vue({
                     break;
             }
             return ret;
+        },
+        reset: function() {
+            this.cards = new Map()
+            this.decks = [],
+            this.commons = [],
+            this.deck_code = ''
         }
     },
     watch: {

@@ -7,16 +7,34 @@
     <title>Shadowbab</title>
     <script src="js/vue.js"></script>
     <script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:400,700" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <div id="app">
-        <form @submit.prevent="handleSubmit">
-            <input type="deck_code" v-model="deck_code" placeholder="Deck code"/>
-            <button type="submit">Add Deck</button>
-        </form>
-        <div class="deck_area">
+        <div class="ctoa">
+            <div class="ctoa_top">
+                <div class="heading">
+                    <h1 class="heading_name">Shadowbab</h1>
+                    <h3 class="heading_tagline">A shadowverse deck comparison tool</h3>
+                </div>
+                <div class="form_group">
+                    <form class="deck_entry" @submit.prevent="handleSubmit">
+                        <input class="form_input" type="deck_code" v-model="deck_code" placeholder="Deck code" required pattern="[A-Za-z0-9]{4}" />
+                        <button class="btn form_button" type="submit">Add Deck</button>
+                    </form>
+                    <button class="btn reset" v-on:click="reset">Reset</button>
+                </div>
+            </div>
+            <div class="bottom_shape">
+                <img src="img/shape14@2x.png">
+            </div>
+        </div>
+        <template v-if="decks.length == 0">
+            <h2 class="start_prompt">Add a deck to get started</h2>
+        </template>
+        <div class="deck_area" v-else>
             <ul class="cardlist">
                 <h2 class="deck_name">Cards in common</h2>
                 <li class="card_item" v-for="(num,card) in getCounts(commons)">

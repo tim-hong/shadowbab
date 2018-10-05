@@ -14,14 +14,150 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    min-height: 100vh;
+}
+
 .hidden {
     display: none;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+}
+.fade-enter-active {
+    transition: opacity 1s ease-out;
+    transition-delay: 1s;
+  }
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-to {
+    opacity: 1;
+  }
+  .fade-move {
+    transition: transform 1s;
+  }
+.ctoa_top {
+    background-color: #453369;
+    background-image: linear-gradient(to right bottom, #B993D680, #8CA6DB99), url('../img/luna.png');
+    background-position: 85% 85%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.heading {
+    margin-left: 80px;
+}
+
+.heading_name {
+    font-size: 70px;
+    text-shadow: 1px 1px 4px #0000004d;
+    letter-spacing: 20px;
+}
+
+.heading_tagline {
+    font-size: 30px;
+    text-shadow: 1px 1px 4px #0000004d;
+    max-width: 500px;
+    letter-spacing: 10px;
+    margin-top: 20px;
+
+}
+
+input:required {
+    box-shadow: none;
+}
+
+.form_input {
+    border:none;
+    padding: 15px 20px;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 15px;
+    transition: all .3s;
+    border-bottom: 3px solid transparent;
+    width: 150px;
+    text-align: center;
+}
+
+.form_input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(#000, .1);
+    border-bottom: 3px solid green;
+}
+
+.form_input:focus:invalid {
+    border-bottom: 3px solid red;
+}
+
+.btn {
+    border:none;
+    padding: 15px 20px;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 15px;
+    transition: all .3s;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    background-color: #c094ff;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #9c78d1;
+}
+
+.btn:active,
+.btn:focus {
+    transform: scale(.95);
+}
+
+.reset {
+    background-color: #f36969;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.reset:hover {
+    background-color: #cf6262;
+}
+
+.bottom_shape {
+    overflow: hidden;
+    display:none;
+}
+.bottom_shape img{
+    height: 150px;
+    width: 100%;
+    background-color: rgba(236,236,236,.2);
+}
+
+.start_prompt {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 50px;
+}
+
+.form_group {
+    align-self: center;
 }
 
 .deck_area {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: rgba(236,236,236,.2);
+    flex-grow: 1;
 
 }
 
